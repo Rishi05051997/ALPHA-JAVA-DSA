@@ -1,0 +1,11 @@
+//// Function to find sum of two numbers
+//// Function to swap two values of variables
+//// Function To Find Product of two numbers
+//// Function to Find Factorial of number
+//// Function to Find Binomial Coefficient
+//// Binomial Coefficient = (n!)/(r!)*(n-r)!
+//// What is functions Overloading
+//// For Ex. To Check if a number is Prime or not
+//// For Ex. Print all Primes in a Range
+//// For Ex. Convert From Binary to Decimal
+///// For Ex. Convert From Decimal to Binary

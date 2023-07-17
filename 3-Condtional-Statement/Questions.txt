@@ -1,0 +1,8 @@
+//// Question 1 : Write a Java program to get a number from the user and print
+//// whether it is positive or negative.
+
+//// Question 3 : Write a Java program to input week number(1-7) and print day
+//// of week name using switch case.
+
+//// Question 5 : Write a Java program that takes a year from the user and print
+//// whether that year is a leap year or not
