@@ -212,7 +212,7 @@ public class ArrayCC {
      * Time Complexity: O(n^3)
      * Output: 8
      */
-    public static void maxSubArraySum(int nums[]) {
+    public static void getMaxSubArraySumBruteForce(int nums[]) {
         int currentSum = 0;
         int maxSumVal = Integer.MIN_VALUE;
         for (int i = 0; i < nums.length; i++) {
@@ -234,6 +234,65 @@ public class ArrayCC {
         }
         System.out.println();
         System.out.println("Max Sum: " + maxSumVal);
+    }
+
+    /**
+     * Max Sub Array Sum
+     * --- Prefix Sum Array Approach ( More Optimized Approach )
+     * Prefix Array Formula: prefix[i-1] + arr[i]
+     * Formula : prefix[end] - prefix[start-1]
+     * 
+     * Time Complexity : O(n^2)
+     */
+    public static int getMaxSubArraySumPrefixSumApproach(int nums[]) {
+        int currentSum = 0;
+        int maxSum = Integer.MIN_VALUE;
+        int prefix[] = new int[nums.length];
+        prefix[0] = nums[0];
+        //// calculate prefix array
+        for (int i = 1; i < prefix.length; i++) {
+            prefix[i] = prefix[i - 1] + nums[i];
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            int start = i;
+            for (int j = start; j < nums.length; j++) {
+                int end = j;
+                currentSum = start == 0 ? prefix[end] : prefix[end] - prefix[start - 1];
+                if (currentSum > maxSum) {
+                    maxSum = currentSum;
+                }
+            }
+        }
+        System.out.println("Max Sum: " + maxSum);
+        return maxSum;
+    }
+
+    /**
+     * Max Subarray Sum
+     * ---- Kadane's Algorithm
+     * Time Complexity: O(n)
+     */
+
+    public static int getMaxSubArraySumUsingKadenAlgorithm(int nums[]) {
+        int maxSum = Integer.MIN_VALUE;
+        int currentSum = 0;
+        //// checking all elemenets are negative or not
+        // for (int i = 0; i < nums.length; i++) {
+        // if(!Math.abs(nums[i])){
+
+        // }
+        // }
+        for (int i = 0; i < nums.length; i++) {
+            currentSum += nums[i];
+            if (currentSum < 0) {
+                currentSum = 0;
+            }
+            ;
+            maxSum = Math.max(currentSum, maxSum);
+        }
+        System.out.println("Max Sub Array Sum: " + maxSum);
+        return maxSum;
     }
 
     public static void main(String[] args) {
@@ -400,8 +459,29 @@ public class ArrayCC {
          * {1}
          */
 
-        int maxSubArraySum[] = { 1, -2, 6, -1, 3 };
-        maxSubArraySum(maxSubArraySum);
+        // int maxSubArraySum[] = { 1, -2, 6, -1, 3 };
+        // getMaxSubArraySumBruteForce(maxSubArraySum);
+
+        /**
+         * Max Sub Array Sum
+         * --- Prefix Sum Array Approach ( More Optimized Approach )
+         * Prefix Array Formula: prefix[i-1] + arr[i]
+         * Formula : prefix[end] - prefix[start-1]
+         */
+
+        // int prefixArrMaxSumArr[] = { 1, -2, 6, -1, 3 };
+
+        // getMaxSubArraySumPrefixSumApproach(prefixArrMaxSumArr);
+
+        /**
+         * Max Subarray Sum
+         * ---- Kadane's Algorithm
+         * Time Complexity: O(n)
+         */
+
+        int kadaneArr[] = { -1, -2, -4, -6 };
+
+        getMaxSubArraySumUsingKadenAlgorithm(kadaneArr);
 
     }
 }

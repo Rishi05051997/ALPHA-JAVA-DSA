@@ -81,4 +81,19 @@
 * Output: 8
 */
 
+/**
+* Max Subarray Sum
+* ---- Kadane's Algorithm
+* Time Complexity: O(n)
+*/
 
+
+
+/**
+* Max Sub Array Sum
+* --- Prefix Sum Array Approach ( More Optimized Approach )
+* Prefix Array Formula: prefix[i-1] + arr[i]
+* Formula : prefix[end] - prefix[start-1]
+* 
+* Time Complexity : O(n^2)
+*/
