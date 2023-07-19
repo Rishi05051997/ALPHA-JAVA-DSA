@@ -197,8 +197,47 @@ public class ArrayCC {
         System.out.println("Total Sub Arrays: " + totalSubArrays);
     }
 
+    /**
+     * Max Subarray Sum ( Brute Force )
+     * 
+     * For Ex.
+     * int arr[] = {1,-2,6,-1};
+     * Sub Arrays are:
+     * {1} {1,-2} {1,-2,6} {1,-2,6,-1, 3}
+     * {-2} {-2,6} {-2,6} {-2,6,-1, 3}
+     * {6} {6,-1, 3}
+     * {-1, 3}
+     * {3}
+     * 
+     * Time Complexity: O(n^3)
+     * Output: 8
+     */
+    public static void maxSubArraySum(int nums[]) {
+        int currentSum = 0;
+        int maxSumVal = Integer.MIN_VALUE;
+        for (int i = 0; i < nums.length; i++) {
+            int start = i;
+            for (int j = i; j < nums.length; j++) {
+                int end = j;
+                currentSum = 0;
+                for (int k = start; k <= end; k++) {
+                    //// Subarray Sum
+                    currentSum += nums[k];
+                }
+                System.out.print(currentSum + " ");
+                //// Current sum is greater than max sum value then we are assigning current sum
+                //// value into max sum
+                if (currentSum > maxSumVal) {
+                    maxSumVal = currentSum;
+                }
+            }
+        }
+        System.out.println();
+        System.out.println("Max Sum: " + maxSumVal);
+    }
+
     public static void main(String[] args) {
-        //// List : It us a list of elemenets of the "same" type placed in a
+        //// List : It is a list of elemenets of the "same" type placed in a
         //// "contiguous" memory location.
         /**
          * Operations in Arrays
@@ -345,9 +384,24 @@ public class ArrayCC {
          * Time Complexity: O(n^2)
          */
 
-        int arrForSubArrays[] = { 2, 4, 6, 8, 10 };
+        // int arrForSubArrays[] = { 2, 4, 6, 8, 10 };
 
-        printSubArrays(arrForSubArrays);
+        // printSubArrays(arrForSubArrays);
+
+        /**
+         * Max Subarray Sum ( brute Force )
+         * 
+         * For Ex.
+         * int arr[] = {1,-2,6,-1};
+         * Sub Arrays are:
+         * {1} {1,-2} {1,-2,6} {1,-2,6,-1}
+         * {-2} {-2,6} {-2,6} {-2,6,-1}
+         * {6} {6-1}
+         * {1}
+         */
+
+        int maxSubArraySum[] = { 1, -2, 6, -1, 3 };
+        maxSubArraySum(maxSubArraySum);
 
     }
 }

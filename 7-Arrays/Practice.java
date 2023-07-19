@@ -1,24 +1,28 @@
 public class Practice {
-    public static void printSubArray(int nums[]) {
+    public static int getMaxSubArraySum(int nums[]) {
+        int currentSum = 0;
+        int maxSum = Integer.MIN_VALUE;
         for (int i = 0; i < nums.length; i++) {
             int start = i;
             for (int j = i; j < nums.length; j++) {
                 int end = j;
-                int sumOfSubArr = 0;
+                currentSum = 0;
                 for (int k = start; k <= end; k++) {
-                    System.out.print(nums[k] + " ");
-                    sumOfSubArr += nums[k];
+                    currentSum += nums[k];
                 }
-                System.out.print(" Sum: " + sumOfSubArr);
-                System.out.println();
+                System.out.print(currentSum + ", ");
+                if (currentSum > maxSum) {
+                    maxSum = currentSum;
+                }
             }
         }
+        return maxSum;
     }
 
     public static void main(String[] args) {
-        //// Binary Search
-        //// Array should be sorted
-        int arrayForPairs[] = { 2, 4, 6, 8, 10 };
-        printSubArray(arrayForPairs);
+        ///// Max Sub Array Sum ( Brute Force )
+        int arr[] = { 1, -2, 6, -1, 3, 45 };
+        System.out.println("Max Sum :" + getMaxSubArraySum(arr));
+
     }
 }
