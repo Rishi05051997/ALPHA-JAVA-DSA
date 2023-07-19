@@ -87,6 +87,33 @@ public class ArrayCC {
         }
     }
 
+    /**
+     * Pairs in an Array
+     * For ex.
+     * int arr[] = {2,4,6,8};
+     * //// below one we are finding all possible pairs of the given array
+     * (2,4) (2,6) (2,8) (2,10)
+     * (4,6) (4,8) (4,10)
+     * (6,8) (6,10)
+     * (8,10)
+     * 
+     * //// Here we are using nested loops
+     * Time Complexity: O(n^2)
+     */
+
+    public static void printPairs(int nums[]) {
+        int totalPairs = 0;
+        for (int i = 0; i < nums.length; i++) {
+            int current = nums[i]; ///// 2, 4, 6, 10
+            for (int j = i + 1; j < nums.length; j++) {
+                System.out.print("(" + current + "," + nums[j] + ") ");
+                totalPairs++;
+            }
+            System.out.println();
+        }
+        System.out.println("Total Pairs: " + totalPairs);
+    }
+
     public static void main(String[] args) {
         //// List : It us a list of elemenets of the "same" type placed in a
         //// "contiguous" memory location.
@@ -194,11 +221,31 @@ public class ArrayCC {
          * Space Complexity : O(1)
          */
 
-        int normalArr[] = { 2, 4, 6, 8 };
-        reverse(normalArr);
-        for (int i = 0; i < normalArr.length; i++) {
-            System.out.print(normalArr[i] + " ");
-        }
+        // int normalArr[] = { 2, 4, 6, 8 };
+        // reverse(normalArr);
+        // for (int i = 0; i < normalArr.length; i++) {
+        // System.out.print(normalArr[i] + " ");
+        // }
+
+        /**
+         * Pairs in an Array
+         * For ex.
+         * int arr[] = {2,4,6,8};
+         * //// below one we are finding all possible pairs of the given array
+         * (2,4) (2,6) (2,8) (2,10)
+         * (4,6) (4,8) (4,10)
+         * (6,8) (6,10)
+         * (8,10)
+         * 
+         * //// Here we are using nested loops
+         * 
+         * Formula For Calculating total no of pairs in an array
+         * total pairs = n(n-1)/2; where n = no of elements in an array
+         * Time Complexity: O(n^2)
+         */
+
+        int arrForPairs[] = { 2, 4, 6, 8, 10 };
+        printPairs(arrForPairs);
 
     }
 }
