@@ -1,21 +1,24 @@
 public class Practice {
-    public static void printPairs(int nums[]) {
-        int tp = 0;
+    public static void printSubArray(int nums[]) {
         for (int i = 0; i < nums.length; i++) {
-            int current = nums[i]; //// 2, 4, 6, 8, 10
-            for (int j = i + 1; j < nums.length; j++) {
-                System.out.print("(" + current + "," + nums[j] + ") ");
-                tp++;
+            int start = i;
+            for (int j = i; j < nums.length; j++) {
+                int end = j;
+                int sumOfSubArr = 0;
+                for (int k = start; k <= end; k++) {
+                    System.out.print(nums[k] + " ");
+                    sumOfSubArr += nums[k];
+                }
+                System.out.print(" Sum: " + sumOfSubArr);
+                System.out.println();
             }
-            System.out.println();
         }
-        System.out.println("Total Pairs: " + tp);
     }
 
     public static void main(String[] args) {
         //// Binary Search
         //// Array should be sorted
-        int arrayForPairs[] = { 2, 4, 6, 10, 12, 14 };
-        printPairs(arrayForPairs);
+        int arrayForPairs[] = { 2, 4, 6, 8, 10 };
+        printSubArray(arrayForPairs);
     }
 }

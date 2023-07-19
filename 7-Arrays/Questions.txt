@@ -49,3 +49,18 @@
 * total pairs = n(n-1)/2; where n = no of elements in an array
 * Time Complexity: O(n^2)
 */
+
+/**
+* Print Subarrays
+* ---- a "continuous" part of an array
+* 
+* For ex.
+* int arr[] = {2,4,6,8,10}
+* 2: {2},{2,4}, {2,4,6}, {2,4,6}, {2,4,6,10}
+* 4: {4},{4,6}, {4,6,8}, {4,6,8,10}
+* 8: {8},{8,10}
+* 10:{10}
+* 
+* //// Nested Loops
+* Time Complexity: O(n^2)
+*/

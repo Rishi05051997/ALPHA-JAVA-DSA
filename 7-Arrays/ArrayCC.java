@@ -114,6 +114,89 @@ public class ArrayCC {
         System.out.println("Total Pairs: " + totalPairs);
     }
 
+    /**
+     * Print Subarrays
+     * ---- a "continuous" part of an array
+     * 
+     * For ex.
+     * int arr[] = {2,4,6,8,10}
+     * 2: {2},{2,4}, {2,4,6}, {2,4,6}, {2,4,6,10}
+     * 4: {4},{4,6}, {4,6,8}, {4,6,8,10}
+     * 8: {8},{8,10}
+     * 10:{10}
+     * 
+     * //// Nested Loops
+     * Time Complexity: O(n^2)
+     * Output:
+     * { 2, }
+     *
+     * Sum: 2
+     * { 2, 4, }
+     * 
+     * Sum: 6
+     * { 2, 4, 6, }
+     * 
+     * Sum: 12
+     * { 2, 4, 6, 8, }
+     * 
+     * Sum: 20
+     * { 2, 4, 6, 8, 10, }
+     * 
+     * Sum: 30
+     * { 4, }
+     * 
+     * Sum: 4
+     * { 4, 6, }
+     * 
+     * Sum: 10
+     * { 4, 6, 8, }
+     * 
+     * Sum: 18
+     * { 4, 6, 8, 10, }
+     * 
+     * Sum: 28
+     * { 6, }
+     * 
+     * Sum: 6
+     * { 6, 8, }
+     * 
+     * Sum: 14
+     * { 6, 8, 10, }
+     * 
+     * Sum: 24
+     * { 8, }
+     * 
+     * Sum: 8
+     * { 8, 10, }
+     * 
+     * Sum: 18
+     * { 10, }
+     * 
+     * Sum: 10
+     * Total Sub Arrays: 15
+     */
+
+    public static void printSubArrays(int nums[]) {
+        int totalSubArrays = 0;
+        for (int i = 0; i < nums.length; i++) {
+            int start = i; //// 2,4,6,8,10
+            for (int j = i; j < nums.length; j++) {
+                int end = j;
+                int sumOfSubArr = 0;
+                System.out.print("{ ");
+                for (int k = start; k <= end; k++) {
+                    sumOfSubArr += nums[k];
+                    System.out.print(nums[k] + ", "); //// Subarray
+                }
+                System.out.println(" }");
+                totalSubArrays++;
+                System.out.println();
+                System.out.println("Sum: " + sumOfSubArr);
+            }
+        }
+        System.out.println("Total Sub Arrays: " + totalSubArrays);
+    }
+
     public static void main(String[] args) {
         //// List : It us a list of elemenets of the "same" type placed in a
         //// "contiguous" memory location.
@@ -244,8 +327,27 @@ public class ArrayCC {
          * Time Complexity: O(n^2)
          */
 
-        int arrForPairs[] = { 2, 4, 6, 8, 10 };
-        printPairs(arrForPairs);
+        // int arrForPairs[] = { 2, 4, 6, 8, 10 };
+        // printPairs(arrForPairs);
+
+        /**
+         * Print Subarrays
+         * ---- a "continuous" part of an array
+         * 
+         * For ex.
+         * int arr[] = {2,4,6,8,10}
+         * 2: {2},{2,4}, {2,4,6}, {2,4,6}, {2,4,6,10}
+         * 4: {4},{4,6}, {4,6,8}, {4,6,8,10}
+         * 8: {8},{8,10}
+         * 10:{10}
+         * 
+         * //// Nested Loops
+         * Time Complexity: O(n^2)
+         */
+
+        int arrForSubArrays[] = { 2, 4, 6, 8, 10 };
+
+        printSubArrays(arrForSubArrays);
 
     }
 }
