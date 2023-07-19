@@ -22,3 +22,9 @@
 * Smallest Number
 * ---- Find the "smallest" number in a given array
 */
+
+/**
+* Binary Search
+* ---- prerequisite - Sorted Array
+* Time Complexity : O (log n)
+*/

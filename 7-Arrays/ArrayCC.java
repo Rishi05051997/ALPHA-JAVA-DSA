@@ -55,12 +55,20 @@ public class ArrayCC {
      */
     public static int binarySearch(int nums[], int key) {
         int start = 0, end = nums.length - 1;
+
         while (start <= end) {
             int mid = (start + end) / 2;
-            if (mid == key) {
 
+            //// comparison
+            if (nums[mid] == key) {
+                return mid;
+            } else if (nums[mid] < key) { //// right
+                start = mid + 1;
+            } else { //// left
+                end = mid - 1;
             }
         }
+        return -1;
     }
 
     public static void main(String[] args) {
@@ -125,6 +133,7 @@ public class ArrayCC {
         /***
          * Linear Search
          * ----- Find the "index" of element in a given array
+         * Time Complexity : O(n)
          */
         // int numbers[] = { 2, 4, 6, 8, 10, 12, 14, 16 };
         // int key = 100;
@@ -148,13 +157,20 @@ public class ArrayCC {
          * Largest Number
          * ---- Find the "largest" number in a given array
          */
-        int nums[] = { 77, 87, 12, 66, 90, 123, 145, 77 };
-        int largest = getLargest(nums);
-        System.out.println("Largest Value: " + largest);
+        // int nums[] = { 77, 87, 12, 66, 90, 123, 145, 77 };
+        // int largest = getLargest(nums);
+        // System.out.println("Largest Value: " + largest);
 
         /**
          * Binary Search
          * ---- prerequisite - Sorted Array
+         * Time Complexity : O (log n)
          */
+
+        int sortedNum[] = { 2, 4, 6, 8, 19, 12, 14, 16 };
+        int key = 6;
+
+        System.out.println("index for key at: " + binarySearch(sortedNum, key));
+
     }
 }
