@@ -1,0 +1,24 @@
+/**
+* Operations in Arrays
+* Create
+* Input
+* Output
+* Update
+*/
+
+/**
+* Passing Arrays as an Argument to the Function
+* --- We always pass arrays " by referance"
+*/
+
+/***
+* Linear Search
+* ----- Find the "index" of element in a given array
+*/
+
+/**
+* Largest Number
+* ---- Find the "largest" number in a given array
+* Smallest Number
+* ---- Find the "smallest" number in a given array
+*/
