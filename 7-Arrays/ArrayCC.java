@@ -277,12 +277,6 @@ public class ArrayCC {
     public static int getMaxSubArraySumUsingKadenAlgorithm(int nums[]) {
         int maxSum = Integer.MIN_VALUE;
         int currentSum = 0;
-        //// checking all elemenets are negative or not
-        // for (int i = 0; i < nums.length; i++) {
-        // if(!Math.abs(nums[i])){
-
-        // }
-        // }
         for (int i = 0; i < nums.length; i++) {
             currentSum += nums[i];
             if (currentSum < 0) {
