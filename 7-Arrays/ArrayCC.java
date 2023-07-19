@@ -71,6 +71,22 @@ public class ArrayCC {
         return -1;
     }
 
+    /**
+     * Reverse An Array
+     */
+    public static void reverse(int nums[]) {
+        int first = 0, last = nums.length - 1;
+
+        while (first < last) {
+            //// swap
+            int temp = nums[last];
+            nums[last] = nums[first];
+            nums[first] = temp;
+            first++;
+            last--;
+        }
+    }
+
     public static void main(String[] args) {
         //// List : It us a list of elemenets of the "same" type placed in a
         //// "contiguous" memory location.
@@ -167,10 +183,22 @@ public class ArrayCC {
          * Time Complexity : O (log n)
          */
 
-        int sortedNum[] = { 2, 4, 6, 8, 19, 12, 14, 16 };
-        int key = 6;
+        // int sortedNum[] = { 2, 4, 6, 8, 19, 12, 14, 16 };
+        // int key = 6;
 
-        System.out.println("index for key at: " + binarySearch(sortedNum, key));
+        // System.out.println("index for key at: " + binarySearch(sortedNum, key));
+
+        /**
+         * Reverse An Array
+         * Time Complexity : O(n)
+         * Space Complexity : O(1)
+         */
+
+        int normalArr[] = { 2, 4, 6, 8 };
+        reverse(normalArr);
+        for (int i = 0; i < normalArr.length; i++) {
+            System.out.print(normalArr[i] + " ");
+        }
 
     }
 }
