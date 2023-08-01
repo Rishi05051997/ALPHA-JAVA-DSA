@@ -289,6 +289,79 @@ public class ArrayCC {
         return maxSum;
     }
 
+    /**
+     * Trapping Rain water ( Auxillary Arrays left Max & right Max )
+     * Given a non negative integers representing an elevetion map where the width
+     * of each bar is 1, compute how much water it can trap after raining
+     * define
+     * --- array height
+     * --- overalltrappedWaterSum = 0;
+     * create
+     * --- Auxillary Arrays left Max -->> Math.max(height[i], leftMax[i-1]) -->> 0
+     * to n
+     * ----Auxillary Array right Max --->> Math.max(height[i], rightMax[i+1]) -->>
+     * n-2 to 0
+     * Loop
+     * --- calculate water level -->> Math.min(leftmax[i], rightMax[i])
+     * ---- calculate trapped water for each bar -->> Water Level - height[i]
+     * ---- calculate overalltrappedWaterSum += trapped water for each bar
+     * return overalltrappedWaterSum
+     */
+    public static int trappedRainwater(int height[]) {
+        //// height length
+        int n = height.length;
+        //// calculate left max boundary - array
+        int trappedWater = 0;
+        int leftMax[] = new int[n];
+        leftMax[0] = height[0];
+        for (int i = 0; i < n; i++) {
+            leftMax[i] = i == 0 ? height[i] : Math.max(height[i], leftMax[i - 1]);
+        }
+        //// calculate right max boundary - array
+        int rightMax[] = new int[n];
+        rightMax[n - 1] = height[n - 1];
+        for (int i = n - 2; i >= 0; i--) {
+            rightMax[i] = Math.max(height[i], rightMax[i + 1]);
+        }
+        //// loop
+        for (int i = 0; i < n; i++) {
+            //// waterLevel = min(leftmax bound, right max bound);
+            int waterLevel = Math.min(leftMax[i], rightMax[i]);
+            //// trapped water = waterLevel - hight[i]
+            int waterTrppedForEachBar = waterLevel - height[i];
+            trappedWater += waterTrppedForEachBar;
+        }
+
+        return trappedWater;
+
+    }
+
+    /**
+     * Best Time To Buy & Sell Stock
+     * you are given an array of prices where prices[i] is the prise of agiven
+     * staock on the ith day. You want to maximise your profit by choosing a single
+     * day to buy one stock & chossing a diffrent day in the future to sell that
+     * stock. Return Maximum profit you can achieve from this transaction. If you
+     * can not achieve any profit, returnn 0.
+     * 
+     * Time Complexity: O(n)
+     */
+
+    public static int buyAndSellStocks(int prices[]) {
+        int buyPrice = Integer.MAX_VALUE;
+        int maxProfit = 0;
+        for (int i = 0; i < prices.length; i++) {
+            if (buyPrice < prices[i]) { /// profit
+                int profit = prices[i] - buyPrice; //// todays profit
+                maxProfit = Math.max(maxProfit, profit);
+            } else {
+                // loss
+                buyPrice = prices[i];
+            }
+        }
+        return maxProfit;
+    }
+
     public static void main(String[] args) {
         //// List : It is a list of elemenets of the "same" type placed in a
         //// "contiguous" memory location.
@@ -473,9 +546,41 @@ public class ArrayCC {
          * Time Complexity: O(n)
          */
 
-        int kadaneArr[] = { -1, -2, -4, -6 };
+        // int kadaneArr[] = { -1, -2, -4, -6 };
 
-        getMaxSubArraySumUsingKadenAlgorithm(kadaneArr);
+        // getMaxSubArraySumUsingKadenAlgorithm(kadaneArr);
+
+        /**
+         * Trapping Rain water ( Auxillary Arrays left Max & right Max )
+         * Given a non negative integers representing an elevetion map where the width
+         * of each bar is 1, compute how much water it can trap after raining
+         * define
+         * --- array height
+         * --- overalltrappedWaterSum = 0;
+         * create
+         * --- Auxillary Arrays left Max -->> Math.max(height[i], leftMax[i-1]) -->> 0
+         * to n
+         * ----Auxillary Array right Max --->> Math.max(height[i], rightMax[i+1]) -->>
+         * n-2 to 0
+         * Loop
+         * --- calculate water level -->> Math.min(leftmax[i], rightMax[i])
+         * ---- calculate trapped water for each bar -->> Water Level - height[i]
+         * ---- calculate overalltrappedWaterSum += trapped water for each bar
+         * return overalltrappedWaterSum
+         */
+        // int heightArr[] = { 4, 2, 0, 6, 3, 2, 5 };
+        // System.out.println("Trapped Water: " + trappedRainwater(heightArr));
+
+        /**
+         * Best Time To Buy & Sell Stock
+         * you are given an array of prices where prices[i] is the price of a given
+         * stock on the ith day. You want to maximise your profit by choosing a single
+         * day to buy one stock & chossing a diffrent day in the future to sell that
+         * stock. Return Maximum profit you can achieve from this transaction. If you
+         * can not achieve any profit, returnn 0.
+         */
+        int prices[] = { 7, 1, 5, 3, 6, 4 };
+        System.out.println("Max Profit: " + buyAndSellStocks(prices));
 
     }
 }

@@ -1,26 +1,20 @@
 public class Practice {
-    public static void kadane(int nums[]) {
-        int currentSum = 0;
-        int maxSum = Integer.MIN_VALUE;
-
+    public static void bestTimeToBuyAndSellStock(int nums[]) {
+        int buyPrice = Integer.MAX_VALUE;
+        int overallProfit = 0;
         for (int i = 0; i < nums.length; i++) {
-            currentSum += nums[i];
-            if (currentSum < 0) {
-                currentSum = 0;
-            }
-            maxSum = Math.max(currentSum, maxSum);
-
-            if (currentSum > maxSum) {
-                maxSum = currentSum;
+            if (buyPrice < nums[i]) {
+                int profit = nums[i] - buyPrice;
+                overallProfit = Math.max(overallProfit, profit);
+            } else {
+                buyPrice = nums[i];
             }
         }
-        System.out.println("Max Sum: " + maxSum);
+        System.out.println(overallProfit);
     }
 
     public static void main(String[] args) {
-        ///// Max Sub Array Sum ( Brute Force )
-        int arr[] = { 1, -2, 6, -1, 3 };
-        kadane(arr);
-
+        int nums[] = { 7, 1, 5, 3, 6, 4 };
+        bestTimeToBuyAndSellStock(nums);
     }
 }
