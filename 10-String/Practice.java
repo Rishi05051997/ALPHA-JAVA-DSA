@@ -113,7 +113,7 @@ public class Practice {
         // String sen = "hi, i am vrushabh";
         // System.out.println(toUpperCase(sen));
 
-        String comp = "aaabbccccdddddd";
+        String comp = "aaabbcdddddd";
         System.out.println(strCompression(comp));
     }
 }
